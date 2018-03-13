@@ -33,7 +33,7 @@ public class ContinuousIntegrationServer extends AbstractHandler {
 
         cloneRepository.init(githubURL, localTempFile, logFilePath);
         compileRepository.init(localTempFile, logFilePath);
-
+        
         System.out.println("Done");
 
         notification.init(logFilePath);
