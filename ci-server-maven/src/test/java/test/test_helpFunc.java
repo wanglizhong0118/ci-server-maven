@@ -13,7 +13,7 @@ import app.helpFunc;
 
 public class test_helpFunc {
 
-    String test_tempDir = "C:\\Users\\allwi\\Documents\\GitHub\\ci-server-junit";
+    String test_tempDir = "C:\\Users\\allwi\\Documents\\GitHub\\ci-server-maven-junit";
 
     @Rule
     public ExpectedException expectedException = ExpectedException.none();

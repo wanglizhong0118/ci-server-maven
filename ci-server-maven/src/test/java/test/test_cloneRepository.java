@@ -14,9 +14,9 @@ import app.helpFunc;
 
 public class test_cloneRepository {
 
-    String test_githubURL = "https://github.com/wanglizhong0118/ci-server.git";
+    String test_githubURL = "https://github.com/wanglizhong0118/ci-server-maven.git";
     String test_githubURL_fake = "https://github.com/wanglizhong0118/notExistRepo.git";
-    String test_tempDir = "C:\\Users\\allwi\\Documents\\GitHub\\ci-server-junit";
+    String test_tempDir = "C:\\Users\\allwi\\Documents\\GitHub\\ci-server-maven-junit";
 
     @Test
     public void test_githubURL_exists() throws IOException {

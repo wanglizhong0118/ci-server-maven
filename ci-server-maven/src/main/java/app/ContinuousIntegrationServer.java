@@ -12,8 +12,8 @@ import org.eclipse.jetty.server.handler.AbstractHandler;
 
 public class ContinuousIntegrationServer extends AbstractHandler {
 
-    public static String githubURL = "https://github.com/wanglizhong0118/ci-server.git";
-    public static String tempDir = "C://Users/allwi/Documents/GitHub/ci-server-temp";
+    public static String githubURL = "https://github.com/wanglizhong0118/ci-server-maven.git";
+    public static String tempDir = "C://Users//allwi//Documents//GitHub//ci-server-maven-temp";
     public static File localTempFile;
     public static String logFilePath;
 
@@ -32,11 +32,11 @@ public class ContinuousIntegrationServer extends AbstractHandler {
         logFilePath = localTempFile + "_logger.txt";
 
         cloneRepository.init(githubURL, localTempFile, logFilePath);
-        compileRepository.init(localTempFile, logFilePath);
+        // compileRepository.init(localTempFile, logFilePath);
 
         System.out.println("Done");
 
-        notification.init(logFilePath);
+        // notification.init(logFilePath);
 
     }
 

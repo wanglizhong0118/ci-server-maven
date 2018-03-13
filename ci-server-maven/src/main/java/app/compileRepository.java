@@ -13,6 +13,9 @@ public class compileRepository {
     private static String CMD = "cmd.exe";
     private static String compileCommand = " javac -cp lib/* src/app/*.java";
 
+    private static String cleanCompileSource = "mvn clean compile";
+    private static String cleanCompileTest = "mvn clean test-compile";
+
     public static void init(File localtmpPath, String logFilePath) {
 
         String compileLocation = localtmpPath.getAbsolutePath() + "/ci-server";
@@ -47,7 +50,6 @@ public class compileRepository {
             }
             pWriter.println("===============================");
         } catch (IOException e) {
-            System.out.println("certain error happen");
             e.printStackTrace();
         }
     }
