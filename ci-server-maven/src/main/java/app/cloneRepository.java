@@ -12,31 +12,27 @@ import org.eclipse.jgit.api.errors.GitAPIException;
 
 public class cloneRepository {
 
-    public static void init(String githubURL, File localtmpPath, String logFilePath) {
-        try (FileWriter fw = new FileWriter(logFilePath, true);
-                BufferedWriter bw = new BufferedWriter(fw);
-                PrintWriter out = new PrintWriter(bw)) {
-            try {
-                out.println(LocalDateTime.now());
-                out.println("Downloading project ...... ");
-                out.println("Source Github project: " + githubURL);
-                long startTime = System.currentTimeMillis();
-                Git git = Git.cloneRepository().setURI(githubURL).setDirectory(localtmpPath)
-                        .setBranch("refs/heads/master").call();
-                git.close();
-                long endTime = System.currentTimeMillis();
-                long timeToClone = endTime - startTime;
-                out.println("Clone Done in " + timeToClone + " ms");
-                out.println();
-                out.println("=============================================================================");
-                out.println();
-            } catch (GitAPIException e) {
-                System.out.println("Clone Failed ");
-                e.printStackTrace();
-            }
-        } catch (IOException e) {
+    public static void init(String githubURL, File localtmpPath, String logFilePath) throws IOException {
+        BufferedWriter bw = new BufferedWriter(new FileWriter(logFilePath, true));
+        PrintWriter outwriter = new PrintWriter(bw);
+        try {
+            outwriter.println(LocalDateTime.now());
+            outwriter.println("Downloading project ...... ");
+            outwriter.println("Source Github project: " + githubURL);
+            long startTime = System.currentTimeMillis();
+            Git git = Git.cloneRepository().setURI(githubURL).setDirectory(localtmpPath).setBranch("refs/heads/master")
+                    .call();
+            git.close();
+            long endTime = System.currentTimeMillis();
+            long timeToClone = endTime - startTime;
+            outwriter.println("Clone Done in " + timeToClone + " ms");
+            outwriter.println();
+            outwriter.println("=============================================================================");
+            outwriter.println();
+            outwriter.close();
+        } catch (GitAPIException e) {
+            System.out.println("Clone Failed ");
             e.printStackTrace();
         }
     }
-
 }

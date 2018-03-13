@@ -12,37 +12,35 @@ public class compileRepository {
 
     private static String CMD = "cmd.exe";
 
-    private static String cleanCompileSource = "mvn clean compile";
-    private static String cleanCompileTest = "mvn clean test-compile";
+    private static String cleanCompileSource = " mvn clean compile ";
+    private static String cleanCompileTest = " mvn clean test-compile ";
+    private static String runTestCases = " mvn test -Dtest=AllTests ";
 
-    public static void init(File localtmpPath, String logFilePath) throws IOException {
-
+    public static void init(File localtmpPath, String logFilePath) throws IOException, InterruptedException {
+        String line;
         String compileLocation = localtmpPath.getAbsolutePath() + "/ci-server-maven";
+        String testCompile = "/C cd " + compileLocation + " &" + runTestCases + " >> " + logFilePath;
+        System.out.println("compileLocation:" + compileLocation);
+        System.out.println("testCompile:" + testCompile);
 
-        try (FileWriter fw = new FileWriter(logFilePath, true);
-                BufferedWriter bw = new BufferedWriter(fw);
-                PrintWriter pWriter = new PrintWriter(bw)) {
+        ProcessBuilder compilationBuilder = new ProcessBuilder(CMD, testCompile);
+        compilationBuilder.redirectErrorStream(true);
+        Process compileProcess = compilationBuilder.start();
 
-            String sourceCompile = "/C cd " + compileLocation + "&" + cleanCompileTest;
-            ProcessBuilder compilePB = new ProcessBuilder(CMD, sourceCompile);
-            compilePB.redirectErrorStream(true);
-            Process compileProcess = compilePB.start();
+        BufferedReader bri = new BufferedReader(new InputStreamReader(compileProcess.getInputStream()));
+        BufferedReader bre = new BufferedReader(new InputStreamReader(compileProcess.getErrorStream()));
 
-            BufferedReader resultBuffer = new BufferedReader(new InputStreamReader(compileProcess.getInputStream()));
-            String line;
-            String log = "";
-            while (true) {
-                line = resultBuffer.readLine();
-                if (line == null) {
-                    break;
-                }
-                log = log + " \n " + line;
-                pWriter.println(line);
-            }
+        System.out.println("after process");
+
+        while ((line = bri.readLine()) != null) {
+            System.out.println(line);
         }
-        // String testCompile = "/C cd " + compileLocation + "&" + cleanCompileTest + "
-        // >> " + logFilePath;
-        // ProcessBuilder compilePBtest = new ProcessBuilder(CMD, testCompile);
-        // compilePBtest.redirectErrorStream(true).start();
+        bri.close();
+        while ((line = bre.readLine()) != null) {
+            System.out.println(line);
+        }
+        bre.close();
+        compileProcess.waitFor();
     }
+
 }

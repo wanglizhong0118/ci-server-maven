@@ -22,19 +22,27 @@ public class ContinuousIntegrationServer extends AbstractHandler {
         response.setContentType("text/html;charset=utf-8");
         response.setStatus(HttpServletResponse.SC_OK);
         baseRequest.setHandled(true);
-        init();
+        try {
+            init();
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         response.getWriter().println("<br/> CI job done");
     }
 
-    public void init() throws IOException {
+    public void init() throws IOException, InterruptedException {
 
         localTempFile = helpFunc.create_temp_path(tempDir);
         logFilePath = localTempFile + "_logger.txt";
 
         cloneRepository.init(githubURL, localTempFile, logFilePath);
+
+        System.out.println("Clone Done");
+
         compileRepository.init(localTempFile, logFilePath);
-        
-        System.out.println("Done");
+
+        System.out.println("Complation Done");
 
         notification.init(logFilePath);
 
