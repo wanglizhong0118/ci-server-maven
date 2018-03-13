@@ -32,11 +32,11 @@ public class ContinuousIntegrationServer extends AbstractHandler {
         logFilePath = localTempFile + "_logger.txt";
 
         cloneRepository.init(githubURL, localTempFile, logFilePath);
-        // compileRepository.init(localTempFile, logFilePath);
+        compileRepository.init(localTempFile, logFilePath);
 
         System.out.println("Done");
 
-        // notification.init(logFilePath);
+        notification.init(logFilePath);
 
     }
 

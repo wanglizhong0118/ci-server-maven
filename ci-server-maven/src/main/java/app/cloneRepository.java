@@ -27,6 +27,9 @@ public class cloneRepository {
                 long endTime = System.currentTimeMillis();
                 long timeToClone = endTime - startTime;
                 out.println("Clone Done in " + timeToClone + " ms");
+                out.println();
+                out.println("=============================================================================");
+                out.println();
             } catch (GitAPIException e) {
                 System.out.println("Clone Failed ");
                 e.printStackTrace();
