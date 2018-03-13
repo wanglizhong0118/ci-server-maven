@@ -39,10 +39,13 @@ public class ContinuousIntegrationServer extends AbstractHandler {
         System.out.println("------------- New Git repo found -------------");
         cloneRepository.init(githubURL, localTempFile, logFilePath);
         System.out.println("------------- Clone process is done -------------");
-        compileRepository.init(localTempFile, logFilePath);
+
+        mavenRepository.init(localTempFile, logFilePath, "COMPILE");
         System.out.println("------------- Compile process is done -------------");
-        testRepository.init(localTempFile, logFilePath);
+
+        mavenRepository.init(localTempFile, logFilePath, "TEST");
         System.out.println("------------- Test process is done -------------");
+
         notification.init(logFilePath);
         System.out.println("------------- Test result is sent by Email -------------");
 
