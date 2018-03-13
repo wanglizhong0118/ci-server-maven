@@ -22,10 +22,10 @@ public class ContinuousIntegrationServer extends AbstractHandler {
         response.setContentType("text/html;charset=utf-8");
         response.setStatus(HttpServletResponse.SC_OK);
         baseRequest.setHandled(true);
+
         try {
             init();
         } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         response.getWriter().println("<br/> CI job done");
@@ -33,14 +33,18 @@ public class ContinuousIntegrationServer extends AbstractHandler {
 
     public void init() throws IOException, InterruptedException {
 
-        localTempFile = helpFunc.create_temp_path(tempDir);
+        localTempFile = Utils.create_temp_path(tempDir);
         logFilePath = localTempFile + "_logger.txt";
 
+        System.out.println("------------- New Git repo found -------------");
         cloneRepository.init(githubURL, localTempFile, logFilePath);
+        System.out.println("------------- Clone process is done -------------");
         compileRepository.init(localTempFile, logFilePath);
+        System.out.println("------------- Compile process is done -------------");
         testRepository.init(localTempFile, logFilePath);
-
+        System.out.println("------------- Test process is done -------------");
         notification.init(logFilePath);
+        System.out.println("------------- Test result is sent by Email -------------");
 
     }
 

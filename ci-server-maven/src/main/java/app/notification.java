@@ -46,19 +46,18 @@ public class notification {
             message.setSubject("GitRepo Compilation and Testing Result");
 
             BodyPart messageBodyPart = new MimeBodyPart();
-            messageBodyPart.setText("Hello, world");
+            messageBodyPart.setText("Dear user, \n\n Here is your git clone/compilation/test reuslt. \n\n Lizhong");
             Multipart multipart = new MimeMultipart();
             multipart.addBodyPart(messageBodyPart);
 
             messageBodyPart = new MimeBodyPart();
             DataSource source = new FileDataSource(logFilePath);
             messageBodyPart.setDataHandler(new DataHandler(source));
-            messageBodyPart.setFileName(logFilePath);
+            messageBodyPart.setFileName("Test Result");
             multipart.addBodyPart(messageBodyPart);
             message.setContent(multipart);
 
             Transport.send(message);
-
         } catch (MessagingException e) {
             throw new RuntimeException(e);
         }

@@ -16,8 +16,9 @@ public class cloneRepository {
         BufferedWriter bw = new BufferedWriter(new FileWriter(logFilePath, true));
         PrintWriter outwriter = new PrintWriter(bw);
         try {
-            outwriter.println(LocalDateTime.now());
-            outwriter.println("Downloading project ...... ");
+            outwriter.println("=============================================================================");
+            outwriter.println("Reuqest Time is: " + LocalDateTime.now());
+            outwriter.println("Downloading project ......");
             outwriter.println("Source Github project: " + githubURL);
             long startTime = System.currentTimeMillis();
             Git git = Git.cloneRepository().setURI(githubURL).setDirectory(localtmpPath).setBranch("refs/heads/master")

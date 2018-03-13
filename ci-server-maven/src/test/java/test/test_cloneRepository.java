@@ -10,7 +10,7 @@ import java.io.IOException;
 import org.junit.Test;
 
 import app.cloneRepository;
-import app.helpFunc;
+import app.Utils;
 
 public class test_cloneRepository {
 
@@ -21,7 +21,7 @@ public class test_cloneRepository {
     @Test
     public void test_githubURL_exists() throws IOException {
 
-        File test_localTempFile = helpFunc.create_temp_path(test_tempDir);
+        File test_localTempFile = Utils.create_temp_path(test_tempDir);
         String test_logFilePath = test_localTempFile + "_logger.txt";
         File test_logFile = new File(test_logFilePath);
         cloneRepository.init(test_githubURL, test_localTempFile, test_logFilePath);
@@ -30,13 +30,13 @@ public class test_cloneRepository {
         assertNotNull(test_localTempFile.length());
         assertTrue(test_logFile.length() > 0);
 
-        helpFunc.remove_temp_data(test_localTempFile, test_logFile);
+        Utils.remove_temp_data(test_localTempFile, test_logFile);
     }
 
     @Test
     public void test_githubURL_not_exists() throws IOException {
 
-        File test_localTempFile = helpFunc.create_temp_path(test_tempDir);
+        File test_localTempFile = Utils.create_temp_path(test_tempDir);
         String test_logFilePath = test_localTempFile + "_logger.txt";
         File test_logFile = new File(test_logFilePath);
 
@@ -45,7 +45,7 @@ public class test_cloneRepository {
         assertEquals(0, test_localTempFile.length());
         assertTrue(test_logFile.length() > 0);
 
-        helpFunc.remove_temp_data(test_localTempFile, test_logFile);
+        Utils.remove_temp_data(test_localTempFile, test_logFile);
     }
 
     @Test
