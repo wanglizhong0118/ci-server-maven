@@ -47,9 +47,4 @@ public class test_cloneRepository {
 
         Utils.remove_temp_data(test_localTempFile, test_logFile);
     }
-
-    @Test
-    public void falseIsTrue() throws IOException {
-        assertTrue(false);
-    }
 }

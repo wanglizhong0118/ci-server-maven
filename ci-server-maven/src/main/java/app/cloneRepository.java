@@ -12,6 +12,18 @@ import org.eclipse.jgit.api.errors.GitAPIException;
 
 public class cloneRepository {
 
+    /**
+     * Clone a Github repository using specified URL to local file system.
+     * 
+     * @param githubURL
+     *            the URL link to the github repository in https
+     * @param localtmpPath
+     *            the local temporary directory to store the cloned repository
+     * @param logFilePath
+     *            the local temporary file to log the cloned process
+     * @throws IOException
+     *             any exception thrown during the clone process
+     */
     public static void init(String githubURL, File localtmpPath, String logFilePath) throws IOException {
         BufferedWriter bw = new BufferedWriter(new FileWriter(logFilePath, true));
         PrintWriter outwriter = new PrintWriter(bw);

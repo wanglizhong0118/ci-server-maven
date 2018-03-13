@@ -12,6 +12,15 @@ import org.apache.commons.io.FileUtils;
 
 public class Utils {
 
+    /**
+     * Using Java inbuilt random operation to generate directory
+     * 
+     * @param tempDir
+     *            the parent directory
+     * @return new created random directory
+     * @throws IOException
+     *             directory creation failed
+     */
     public static File create_temp_path(String tempDir) throws IOException {
         File tempFile = new File(tempDir);
         File randomTempFile = File.createTempFile("TestCloneGitRepo", "", tempFile);
@@ -21,20 +30,33 @@ public class Utils {
         return randomTempFile;
     }
 
-    public static void remove_temp_data(File tempFile, File tempLog) {
-        try {
-            FileUtils.deleteDirectory(tempFile);
-            tempLog.delete();
-        } catch (IOException e) {
-            System.out.println("Problem occurs when deleting the directory : " + tempFile.toString());
-            e.printStackTrace();
-        }
+    /**
+     * Delete a directory and a file
+     * 
+     * @param tempFile
+     *            directory to be removed
+     * @param tempLog
+     *            file to be removed
+     * @throws IOException
+     *             unsuccessful operation, directory/file cannot be removed
+     */
+    public static void remove_temp_data(File tempFile, File tempLog) throws IOException {
+        FileUtils.deleteDirectory(tempFile);
+        tempLog.delete();
     }
 
-    public static void testPrintCommad(Process compileProcess) throws IOException {
+    /**
+     * Try to system.out.println the response at server side.
+     * 
+     * @param currentPorcess
+     *            current executed process
+     * @throws IOException
+     *             problem append during the read and write process
+     */
+    public static void printCommandResponse(Process currentPorcess) throws IOException {
         String line;
-        BufferedReader bri = new BufferedReader(new InputStreamReader(compileProcess.getInputStream()));
-        BufferedReader bre = new BufferedReader(new InputStreamReader(compileProcess.getErrorStream()));
+        BufferedReader bri = new BufferedReader(new InputStreamReader(currentPorcess.getInputStream()));
+        BufferedReader bre = new BufferedReader(new InputStreamReader(currentPorcess.getErrorStream()));
 
         while ((line = bri.readLine()) != null) {
             System.out.println(line);
@@ -46,7 +68,15 @@ public class Utils {
         bre.close();
     }
 
-    static void printPudding(String logFilePath) throws IOException {
+    /**
+     * Adding several empty lines to make the output file more beautiful
+     * 
+     * @param logFilePath
+     *            current executed process
+     * @throws IOException
+     *             the output file is not validated
+     */
+    public static void printPudding(String logFilePath) throws IOException {
         BufferedWriter bw = new BufferedWriter(new FileWriter(logFilePath, true));
         PrintWriter outwriter = new PrintWriter(bw);
         outwriter.println();
