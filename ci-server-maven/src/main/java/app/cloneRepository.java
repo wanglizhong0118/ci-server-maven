@@ -25,9 +25,8 @@ public class cloneRepository {
      *             any exception thrown during the clone process
      */
     public static void init(String githubURL, File localtmpPath, String logFilePath) {
-        BufferedWriter bw;
         try {
-            bw = new BufferedWriter(new FileWriter(logFilePath, true));
+            BufferedWriter bw = new BufferedWriter(new FileWriter(logFilePath, true));
             PrintWriter outwriter = new PrintWriter(bw);
 
             try {

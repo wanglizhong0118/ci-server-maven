@@ -25,13 +25,13 @@ public class ContinuousIntegrationServer extends AbstractHandler {
 
         try {
             init();
-        } catch (InterruptedException e) {
+        } catch (InterruptedException | MavenException e) {
             e.printStackTrace();
         }
         response.getWriter().println("<br/> CI job done");
     }
 
-    public void init() throws IOException, InterruptedException {
+    public void init() throws IOException, InterruptedException, MavenException {
 
         localTempFile = Utils.create_temp_path(tempDir);
         logFilePath = localTempFile + "_logger.txt";
