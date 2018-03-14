@@ -27,10 +27,10 @@ https://mail.google.com
 
 
 ## How to configure
-Compilation using Maven
+Compilation using Maven  
 `mvn clean test-compile`
 
-Test using Mavn
+Test using Mavn  
 `mvn test -Dtest=AllTests`
 
 
