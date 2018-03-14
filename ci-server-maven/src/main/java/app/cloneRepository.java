@@ -10,6 +10,12 @@ import java.time.LocalDateTime;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
 
+/**
+ * Cloning a git repository from specified github URL(https) using JGit
+ * 
+ * @author allwi
+ *
+ */
 public class cloneRepository {
 
     /**

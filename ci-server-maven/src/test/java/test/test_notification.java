@@ -6,14 +6,23 @@ import org.junit.rules.ExpectedException;
 
 import app.notification;
 
+/**
+ * Test case for class notification
+ * 
+ * @author allwi
+ *
+ */
 public class test_notification {
 
     /**
-     * Test if mail message can accept non-existing file
+     * Defining an instance of ExpectedException
      */
     @Rule
     public ExpectedException runtimeException = ExpectedException.none();
 
+    /**
+     * Test if mail message can accept non-existing file
+     */
     @Test
     public void test_init_FileNotExist() {
         String test_logFilePath = new String();

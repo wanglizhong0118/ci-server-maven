@@ -10,6 +10,13 @@ import java.io.PrintWriter;
 
 import org.apache.commons.io.FileUtils;
 
+/**
+ * Several useful methods, for example creating temporary folder with random
+ * name, removing the temp-created directory and file, printing test message
+ * 
+ * @author allwi
+ *
+ */
 public class Utils {
 
     /**

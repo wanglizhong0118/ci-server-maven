@@ -17,6 +17,12 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
+/**
+ * Sending the compile and test result to user as attachment using Gmail
+ * 
+ * @author allwi
+ *
+ */
 public class notification {
 
     final private static String username = "TestServerByLiz";

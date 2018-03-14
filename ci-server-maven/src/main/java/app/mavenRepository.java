@@ -3,6 +3,12 @@ package app;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * Run pre-defined Maven command in the path where the git repo is cloned
+ * 
+ * @author allwi
+ *
+ */
 public class mavenRepository {
 
     final private static String CMD = "cmd.exe";

@@ -10,14 +10,27 @@ import org.junit.rules.ExpectedException;
 import app.MavenException;
 import app.mavenRepository;
 
+/**
+ * Test case for class mavenRepository
+ * 
+ * @author allwi
+ *
+ */
 public class test_mavenRepository {
 
     /**
-     * Test if the MavenException thrown when the mvn command not exists
+     * Defining an instance of ExpectedException
      */
     @Rule
     public ExpectedException filedMvnCommandException = ExpectedException.none();
 
+    /**
+     * Test if the MavenException thrown correctly when the command does not exist
+     * 
+     * @throws IOException
+     * @throws InterruptedException
+     * @throws MavenException
+     */
     @Test
     public void test_maven_FailedCommand() throws IOException, InterruptedException, MavenException {
         File localtmpPath = new File("test_localtmpPath");

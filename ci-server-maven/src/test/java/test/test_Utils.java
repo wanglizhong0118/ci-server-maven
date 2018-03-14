@@ -17,11 +17,16 @@ public class test_Utils {
     String test_tempDir = "C:\\Users\\allwi\\Documents\\GitHub\\ci-server-maven-junit";
 
     /**
-     * Test if the input string is not a path
+     * Defining an instance of ExpectedException
      */
     @Rule
     public ExpectedException createTempException = ExpectedException.none();
 
+    /**
+     * Test if the input string is not a path
+     * 
+     * @throws IOException
+     */
     @Test
     public void test_create_temp_path_NotPath() throws IOException {
         String test_tempDir = "It is not a path string";
@@ -30,11 +35,16 @@ public class test_Utils {
     }
 
     /**
-     * Test if the input string is a null object
+     * Defining an instance of ExpectedException
      */
     @Rule
     public ExpectedException ceateTempNullException = ExpectedException.none();
 
+    /**
+     * Test if the input string is a null object
+     * 
+     * @throws IOException
+     */
     @Test
     public void test_create_temp_path_Null() throws IOException {
         String test_tempDir = null;
@@ -44,6 +54,8 @@ public class test_Utils {
 
     /**
      * Test if the temporary path is correctly created.
+     * 
+     * @throws IOException
      */
     @Test
     public void test_create_temp_path_Validation() throws IOException {
@@ -57,6 +69,8 @@ public class test_Utils {
 
     /**
      * Test 10 times that the random created folder do not have same name.
+     * 
+     * @throws IOException
      */
     @Test
     public void test_create_temp_path_Random() throws IOException {
@@ -69,6 +83,8 @@ public class test_Utils {
 
     /**
      * Test if an existing file can be removed correctly
+     * 
+     * @throws IOException
      */
     @Test
     public void test_remove_temp_data() throws IOException {
@@ -82,11 +98,16 @@ public class test_Utils {
     }
 
     /**
-     * Test if a non existing file can be removed correctly
+     * Defining an instance of ExpectedException
      */
     @Rule
     public ExpectedException removeTempException = ExpectedException.none();
 
+    /**
+     * Test if a non existing file can be removed correctly
+     * 
+     * @throws IOException
+     */
     @Test
     public void test_remove_temp_data_Exception() throws IOException {
         File test_tempFile = null;
@@ -96,11 +117,16 @@ public class test_Utils {
     }
 
     /**
-     * Test if NullPointerException is thrown when input is null.
+     * Defining an instance of ExpectedException
      */
     @Rule
     public ExpectedException processException = ExpectedException.none();
 
+    /**
+     * Test if NullPointerException is thrown when input is null.
+     * 
+     * @throws IOException
+     */
     @Test
     public void test_printCommandResponse() throws IOException {
         Process test_process = null;
@@ -109,11 +135,16 @@ public class test_Utils {
     }
 
     /**
-     * Test if FileNotFoundException is thrown when input file path doesn't exist.
+     * Defining an instance of ExpectedException
      */
     @Rule
     public ExpectedException puddingException = ExpectedException.none();
 
+    /**
+     * Test if FileNotFoundException is thrown when input file path doesn't exist.
+     * 
+     * @throws IOException
+     */
     @Test
     public void test_printPudding() throws IOException {
         String test_logFilePath = "";

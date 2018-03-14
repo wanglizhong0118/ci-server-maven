@@ -10,6 +10,12 @@ import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.AbstractHandler;
 
+/**
+ * Provided by course TA
+ * 
+ * @author allwi
+ *
+ */
 public class ContinuousIntegrationServer extends AbstractHandler {
 
     public static String githubURL = "https://github.com/wanglizhong0118/ci-server-maven.git";
