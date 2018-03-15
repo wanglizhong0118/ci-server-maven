@@ -1,4 +1,4 @@
-# Continuous Integration
+# Continuous Integrations
 
 A maven based Java project working as a simple coninous integration. This CI server only contains three core features of continuous integration introduced below.
 
